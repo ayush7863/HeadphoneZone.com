@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c3695f78cd.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+
+        }
+        nav{
+           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            position:fixed;
+            width:100%;
+            z-index:999;
+            height:65px;
+            line-height:64px;
+            background-color:white;
+            margin-top:-40px;
+
+
+
+        }
+        nav .container{
+            position:relative;
+            max-width:1250px;
+            padding:0 30px;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+
+
+
+        }
+        .container .logo a{
+            color:#894ae6;
+            text-decoration:none;
+            font-size:17px;
+            font-weight:bold;
+            letter-spacing:2px;
+            text-transform:uppercase;
+
+
+        }
+        .container .nav-links{
+            display:inline-flex;
+        }
+        .nav-links li{
+            list-style:none;
+        }
+        .nav-links li a{
+            color:black;
+            text-decoration:none;
+            font-size:15px;
+            font-weight:bold;
+            padding:9px 25px;
+            border-radius:5px;
+            transition:all 0.3s ease;
+
+
+
+        }
+        .nav-links li a:hover{
+            background-color:#a5a0a9;
+
+
+        }
+        .nav-links .price-menu{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+             background-color:white;
+            width:280px;
+            top:84px;
+            line-height:40px;
+            position:absolute;
+            opacity:0;
+            visibility:hidden;
+            color:black;
+        }
+        .nav-links li:hover .price-menu{
+            opacity:1;
+            visibility:visible;
+            top:66px;
+            transition:all 0.3s ease;
+
+        }
+        .price-menu li a{
+            width:100%;
+            display:block;
+            padding:0px 0px 0px 15px;
+            font-weight:400;
+            border-radius:0px;
+
+        }
+        .nav-links .deals-menu{
+           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color:white;
+            width:200px;
+            top:84px;
+            line-height:40px;
+            position:absolute;
+            display:none;
+            
+        }
+        .nav-links li:hover .deals-menu,
+        .nav-links li:hover .info-box{
+           display:block;
+           top:66px;
+           transition:all 0.3s ease;
+             
+        }
+        .deals-menu li a{
+            width:100%;
+            display:block;
+            padding:0px 0px 0px 15px;
+            font-weight:400;
+            border-radius:0px;
+
+        }
+        .info-box{
+            position:absolute;
+            top:76px;           
+            width:100%;
+            left:0;
+            display:none;
+           
+
+        }
+        .info-box .content{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+             background-color:white;
+            padding:25px 20px;
+            display:flex;
+            width:100%;
+            justify-content:space-between;
+
+
+        }
+        .content .row{
+            width: calc(25% - 30px);
+            line-height:30px;
+            
+
+        }
+        .content .row img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .content .row header{
+            color:black;
+            font-size:20px;
+            font-weight:bold;
+        }
+        .content .row .mega-links{
+            margin-left:-40px;
+            border-left: 1px solid rgb(57, 55, 55);
+        }
+        .content .row:nth-child(1),
+        .content .row:nth-child(2){
+            border-left:0px;
+
+        }
+        .row .mega-links li{
+            padding:0 20px ;
+
+        }
+        .row .mega-links li a{
+            padding:0 20px;
+            color:black;
+            font-size:15px;
+            font-weight:100;
+            display:block;
+
+
+        }
+         .row .mega-links li a:hover{
+            color:#f2f2f2;
+         }
+         .cat-menu>div>img{
+            width:100px;
+            height:100px;
+         }
+         .cat-menu>div{
+            margin:auto;
+            text-align:center;
+            font-size:10px;
+            font-weight:bold;
+         }
+         .nav-links .cat-menu{
+            display:flex;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; 
+            background-color:#f2f0f4;     
+            width:100%;
+            top:84px;
+            left:0;
+            line-height:20px;
+            position:absolute;
+            opacity:0;
+            visibility:hidden;
+            color:black;
+            gap:10px;
+            height:200px;
+            
+
+         }
+         
+         .nav-links li:hover .cat-menu{
+            opacity:1;
+            visibility:visible;
+            top:66px;
+            transition:all 0.3s ease;
+
+        }
+        .cat-menu>div>img:hover{
+             background-color:#5a5560;
+             border-radius:10px;     
+        }
+        h2{
+            font-size:30px;
+            
+            
+        }
+        .input-container{
+            margin-bottom:40px; ;
+        }
+        .input-container>div{
+            border:0px solid black;
+            width:500px;
+            height:400px;
+           position:absolute;
+           top:150px;
+           left:380px;
+           text-align:center;
+        }
+        
+       .email{
+        height:50px;
+        width:100%;
+        border-radius:20px;
+        border:1px solid black;
+       }
+       button{
+        width:100%;
+        height:50px;
+        border-radius:20px;
+        border:1px solid black;
+        background-color:blue;
+        font-size:20px;
+        
+       }
+       #btn{
+        text-decoration:none;
+        color:white;
+       }
+       footer{
+        border:0px solid black;
+        width:100%;
+        height:530px;
+        position:relative;
+        top:550px;
+         margin:0px;
+         padding:0px;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+
+
+       }
+       .footer-section{
+            display:grid;
+            grid-template-columns:repeat(5,1fr);
+            
+            justify-content:center;
+            align-items:center;
+           background-color:rgb(255, 255, 255);
+            width:100%;
+            height:380px;
+            margin-top:10px;
+           
+
+
+
+        }
+        .footer-section>div{
+            border:0px solid black;
+            width:220px;
+            height:320px;
+            font-weight:520;
+            margin:auto;
+
+        }
+        h2{
+            font-size:17px;
+            font-weight:1000;
+            letter-spacing:1px;
+        }
+        .footer-section>div>div{
+            line-height:25px;
+            font-size:15px;
+        }
+        a{
+            color:black;
+            line-height:50px;
+        }
+        .footer-section>div:nth-child(1){
+            width:180px;
+        }
+         .footer-section>div:nth-child(2){
+            width:240px;
+            
+        }
+        .logo-btn{
+            display:flex;
+            border:0px solid black;           
+            justify-content:center;
+            align-items:center;
+            margin-top:50px;
+            height:70px;
+             margin-left: -15px;
+        }
+        .logo-btn>div{
+            border:1px solid black;
+            width:20%;  
+            height:60%;
+            text-align:center;
+            font-size:25px;
+            padding-top:10px;
+           
+        }
+        .address-section{
+            border-top:1px solid black;
+            height:130px;
+            padding-top:25px;
+            background-color:rgb(255, 255, 255);
+            
+        }
+        .address-section>div{
+            text-align:center;
+            line-height:25px;
+            
+        }
+       
+       
+         
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo"><a href="#">Headphone Zone</a></div>
+            <ul class="nav-links">
+                <li>
+                    <a href="">Categories</a>
+                    <div class="cat-menu">
+
+                    </div>
+                </li>
+                <li><a href="">Brands</a></li>
+               <li>
+                <a href="">Prices</a>
+                <ul class="price-menu">
+                    <li><a href="https://www.headphonezone.in/collections/best-headphones-under-rs-1000">Best Price of Under Rs 1,000</a></li>
+                    <li><a href="https://www.headphonezone.in/collections/best-headphones-under-rs-2000">Best Price of Under Rs 2,000</a></li>
+                    <li><a href="">Best Price of Under Rs 3,000</a></li>
+                    <li><a href="">Best Price of Under Rs 10,000</a></li>
+                    <li><a href="">Best Price of Under Rs 20,000</a></li>
+                </ul>
+                </li>
+                <li>
+                    <a href="">Deals</a>
+                    <ul class="deals-menu">
+                        <li><a href="#"> Unboxed</a></li>
+                       <li><a href="#"> Pre -Owned</a></li>
+                        <li><a href="#"> Clearance</a></li>
+                       <li><a href="#"> Demo Unit </a></li>
+                       <li><a href="#">Deals of the Month</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Info</a>
+                    <div class="info-box">
+                        <div class="content">
+                            <div class="row">
+                                <img src="https://image.isu.pub/100512172048-b60290fff76349dd9d74ebb6e1a708ca/jpg/page_1.jpg" alt=""/>
+                            </div>
+                            <div class="row">
+                                <header>About US</header>
+                                <ul class="mega-links">
+                                    <li> <a href="#">Our Story.</a>
+                                    <li> <a href="#">Our Values</a>
+                                    <li> <a href="#">Meet the Team</a>
+                                    <li> <a href="#">Customer Testimonials</a>
+                                    <li> <a href="#">Careers-We're Hiring!</a>
+                                    <li> <a href="#">Brands That Inspire Us!</a>
+
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <header>GET IN TOUCH</header>
+                                <ul class="mega-links">
+                                    <li> <a href="#">Contact the Team</a>
+                                    <li> <a href="#">Coporate Gifiting</a>
+                                    <li> <a href="#">Partner With Us </a>
+                                    
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <header>COMMUNITY</header>
+                                <ul class="mega-links">
+                                    <li> <a href="#">Headphone Zone Merchandise</a>
+                                    <li> <a href="#">Trade-Up Program</a>
+                                    <li> <a href="#">Meet the Team</a>
+                                    <li> <a href="#">Affiliate Program</a>
+                                
+                                </ul>
+                            </div>
+                    
+                    
+                        </div>
+                    </div>
+                </li>
+                <li><a href="">Search</a></li>
+                <li><a href="">Login</a></li>
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="input-container">
+        <div>
+
+        
+            <h2> LOGIN</h2><br/>
+            <p> Please enter your e-mail and password:</p><br/><br/>
+
+            <input type="Email" placeholder="E-mail" class="email"id="Email"><br/><br/>
+            <input type="password" placeholder="Password" class="email" id="pass"> <a href="">Forget Password</a><br/><br/>
+            <button><a href="navbar.html" id="btn">LOGIN</a></button><br/><br/>
+            <p>New Customer? <a href="signup.html">Create an account</a></p>
+
+
+        </div>
+
+
+
+    </div>
+    <footer>
+        <div class="footer-section">
+            <div>
+                <h2>LET US HELP</h2>
+                <div>Help Center</div>
+                <div>Track My Order</div>
+                <div>Cancel My Order</div>
+                <div>Return MY Order</div>
+                <div>Request a Product</div>
+                <div>Report aBug</div>
+                <div>Contanct Us </div>
+            </div>
+            <div>
+                <h2>OUR POLICIES</h2>
+                <div>Shipping & Delivery</div>
+                <div>Returns,Refunds & Cancellations</div>
+                <div>Term & Condition</div>
+                <div>Privacy Policy</div>
+            </div>
+            <div>
+                <h2>COMMUNITY</h2>
+                <div>Headphone Zone Merchandise</div>
+                <div>Trade-Up Program</div>
+                <div>The Insider</div>
+            </div>
+            <div>
+                <h2>BEWARE OF FAKES</h2>
+                <div>Don't get fooled. Look out for smuggled &<br/>
+                 refurbished headphones while shopping online.<br/>
+                  Headphone Zone is a professionally run <br/>
+                  business & deals only in 100% genuine <br/>
+                  headphones.</div>
+                  <a href="#">Learn more</a>
+            </div>
+            <div>
+                <h2> FOLLOW US </h2>
+                <div class="logo-btn">
+                    <div>
+                       <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
+                    <div>
+                         <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+         <div class="address-section">
+            <div>Owned, Operated & Funded by Proud Indians</div>
+            <div>Copyright ©2011-2022 Headphone Zone.</div>
+            <div>Everything on this website has been made with a lot of love and hard work. If you copy anything we will hunt you down. We mean it.</div>
+        </div>
+    </footer>
+     
+</body>
+</html>
+<script>
+    let categories_Arr=[
+
+    {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Icons-Collection-wired-earphones_200x.png?v=1649235536",
+    name:"WIRED EARPHONES"
+    },
+    {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Icons-Collection-wired-headphones-1_200x.png?v=1649236187",
+    name:"WIRED HEADPONES"
+    
+    },
+    {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Icons-Collection-tws-1_200x.png?v=1649236187",
+    name:"TRUE WIRELESS EARBUDS"
+    },
+    {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Icons-Collection-wireless-headphones-1_200x.png?v=1649238576",
+    name:"WIRELESS HEADPHONES"
+    },
+    {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/gaming-icons-filters_200x.png?v=1650012937",
+    name:"GAMING"},
+    ]
+
+
+    categories_Arr.map(function(ele){
+        let box=document.createElement("div")
+
+        let image_url=document.createElement("img")
+        image_url.setAttribute("src",ele.image_url)
+
+        let name=document.createElement("p")
+        name.innerText=ele.name
+
+        box.append(image_url,name)
+        document.querySelector(".cat-menu").append(box);
+
+    });
+
+    let details=JSON.parse(localStorage.getItem("email-detail"))
+    let pass_details=JSON.parse(localStorage.getItem("pass-detail"))
+    //console.log(email_details)
+    let Arr=[]
+    Arr.push(details,pass_details)
+
+    document.querySelector("button").addEventListener("click",mylogin);
+
+   
+
+    function mylogin(){ 
+         let email=document.querySelector("#Email").value;
+
+        let password=document.querySelector("#pass").value;   
+
+        for(let i=0;i<Arr.length-1;i++){
+            if(Arr[0]==email){
+                if(Arr[1]==password){
+                   alert("Login Sucessful")
+                    
+               
+
+                }else{
+                    alert("Wrong details")
+                }
+               
+
+            }
+
+       }
+
+    }
+     
+    
+
+    
+        
+       
+       
+
+       // if()
+    
+</script>
+    
+    
