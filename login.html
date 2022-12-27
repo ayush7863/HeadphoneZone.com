@@ -521,7 +521,7 @@
     name:"WIRED EARPHONES"
     },
     {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Icons-Collection-wired-headphones-1_200x.png?v=1649236187",
-    name:"WIRED HEADPONES"
+    name:"WIRED HEADPHONES"
     
     },
     {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Icons-Collection-tws-1_200x.png?v=1649236187",
@@ -533,6 +533,7 @@
     {image_url:"https://cdn.shopify.com/s/files/1/0153/8863/files/gaming-icons-filters_200x.png?v=1650012937",
     name:"GAMING"},
     ]
+    //console.log(categories_Arr)
 
 
     categories_Arr.map(function(ele){
@@ -551,7 +552,7 @@
 
     let details=JSON.parse(localStorage.getItem("email-detail"))
     let pass_details=JSON.parse(localStorage.getItem("pass-detail"))
-    //console.log(email_details)
+   // console.log(details) 
     let Arr=[]
     Arr.push(details,pass_details)
 
@@ -562,22 +563,17 @@
     function mylogin(){ 
          let email=document.querySelector("#Email").value;
 
-        let password=document.querySelector("#pass").value;   
+        let password=document.querySelector("#pass").value; 
+        console.log(email)  
 
         for(let i=0;i<Arr.length-1;i++){
             if(Arr[0]==email){
-                if(Arr[1]==password){
+                if(Arr[1]==password){                   
                    alert("Login Sucessful")
-                    
-               
-
                 }else{
                     alert("Wrong details")
-                }
-               
-
+                } 
             }
-
        }
 
     }
